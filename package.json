@@ -1,7 +1,7 @@
 {
   "name": "summer_club",
   "version": "1.0.0",
-  "description": "",
+  "description": "Este é um projeto de uma API de sócios de um clube de verão, onde é possível cadastrar, atualizar, deletar e buscar sócios. Nossa aplicação conta com um banco de dados MySQL, e foi desenvolvida em NodeJS, utilizando o framework Express. Para testes, utilizamos o Mocha, Chai e Sinon. Para validação da regra de negócio, utilizamos o Joi.",
   "scripts": {
     "test": "mocha tests/**/*.js tests/**/**/*.js --exit",
     "start": "node src/server.js",
