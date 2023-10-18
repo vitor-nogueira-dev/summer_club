@@ -1,5 +1,6 @@
-const { getAllPartners } = require('./club.model');
+const { getAllPartners, getPartnerById } = require('./club.model');
 
 module.exports = {
   getAllPartners,
+  getPartnerById,
 };
