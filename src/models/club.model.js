@@ -5,6 +5,12 @@ const getAllPartners = async () => {
   return result;
 };
 
+const getPartnerById = async (id) => {
+  const [[result]] = await connection.execute('SELECT * FROM summer_club.partners WHERE id = ?', [id]);
+  return result;
+};
+
 module.exports = {
   getAllPartners,
+  getPartnerById,
 };
