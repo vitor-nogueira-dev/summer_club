@@ -29,15 +29,20 @@ const createPartner = async (partner) => {
 const updatePartner = async (id, partner) => {
   const fields = ['name', 'age', 'matricula', 'email', 'frequent'];
   // [[key, value], [key, value]]
-  const { setClauses, values } = Object.entries(partner).reduce((acc, [key, value]) => {
-    if (fields.includes(key)) {
-      acc.setClauses.push(`${key} = ?`);
-      acc.values.push(value);
-    }
-    return acc;
-  }, { setClauses: [], values: [] });
+  const { setClauses, values } = Object.entries(partner).reduce(
+    (acc, [key, value]) => {
+      if (fields.includes(key)) {
+        acc.setClauses.push(`${key} = ?`);
+        acc.values.push(value);
+      }
+      return acc;
+    },
+    { setClauses: [], values: [] },
+  );
 
-  const query = `UPDATE summer_club.partners SET ${setClauses.join(', ')} WHERE id = ?`;
+  const query = `UPDATE summer_club.partners SET ${setClauses.join(
+    ', ',
+  )} WHERE id = ?`;
 
   values.push(id);
 
@@ -46,9 +51,18 @@ const updatePartner = async (id, partner) => {
   return affectedRows;
 };
 
+const deletePartner = async (id) => {
+  const [{ affectedRows }] = await connection.execute(
+    'DELETE FROM summer_club.partners WHERE id = ?',
+    [id],
+  );
+  return affectedRows;
+};
+
 module.exports = {
   getAllPartners,
   getPartnerById,
   createPartner,
   updatePartner,
+  deletePartner,
 };
