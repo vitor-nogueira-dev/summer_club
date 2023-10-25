@@ -34,9 +34,19 @@ const updatePartner = async (req, res) => {
   return res.status(status).json({ message });
 };
 
+const deletePartner = async (req, res) => {
+  const { id } = req.params;
+  const { type, message, status } = await service.deletePartner(id);
+  if (type) {
+    return res.status(status).json({ message });
+  }
+  return res.status(status).json({ message });
+};
+
 module.exports = {
   getAllPartners,
   getPartnerById,
   createPartner,
   updatePartner,
+  deletePartner,
 };

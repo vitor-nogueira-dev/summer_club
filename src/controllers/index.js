@@ -1,5 +1,5 @@
 const {
-  getAllPartners, getPartnerById, createPartner, updatePartner,
+  getAllPartners, getPartnerById, createPartner, updatePartner, deletePartner,
 } = require('./club.controller');
 
 module.exports = {
@@ -7,4 +7,5 @@ module.exports = {
   getPartnerById,
   createPartner,
   updatePartner,
+  deletePartner,
 };
