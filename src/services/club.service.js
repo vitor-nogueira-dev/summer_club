@@ -35,8 +35,31 @@ const createPartner = async (partner) => {
   };
 };
 
+const updatePartner = async (id, partner) => {
+  const partnerExists = await model.getPartnerById(id);
+  if (!partnerExists) {
+    return { type: 'error', message: 'Partner Not Found', status: 404 };
+  }
+  const validatePartner = partnerSchema.validate(partner);
+  if (validatePartner.error) {
+    return {
+      type: 'error',
+      message: validatePartner.error.details[0].message,
+      status: 422,
+    };
+  }
+  await model.updatePartner(id, partner);
+
+  return {
+    type: null,
+    message: 'Sócio atualizado com sucesso',
+    status: 200,
+  };
+};
+
 module.exports = {
   getAllPartners,
   getPartnerById,
   createPartner,
+  updatePartner,
 };
