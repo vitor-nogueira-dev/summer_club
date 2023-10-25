@@ -57,9 +57,25 @@ const updatePartner = async (id, partner) => {
   };
 };
 
+const deletePartner = async (id) => {
+  const partnerExists = await model.getPartnerById(id);
+  if (!partnerExists) {
+    return { type: 'error', message: 'Partner Not Found', status: 404 };
+  }
+
+  await model.deletePartner(id);
+
+  return {
+    type: null,
+    message: 'Sócio deletado com sucesso',
+    status: 200,
+  };
+};
+
 module.exports = {
   getAllPartners,
   getPartnerById,
   createPartner,
   updatePartner,
+  deletePartner,
 };
