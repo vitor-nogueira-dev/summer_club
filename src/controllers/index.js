@@ -1,7 +1,10 @@
-const { getAllPartners, getPartnerById, createPartner } = require('./club.controller');
+const {
+  getAllPartners, getPartnerById, createPartner, updatePartner,
+} = require('./club.controller');
 
 module.exports = {
   getAllPartners,
   getPartnerById,
   createPartner,
+  updatePartner,
 };
