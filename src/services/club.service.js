@@ -1,4 +1,5 @@
 const model = require('../models');
+const partnerSchema = require('./validations/schemas');
 
 // modelo de retorno da service
 // { type: null | 'error' , message: data, status: statusCode}
@@ -16,7 +17,26 @@ const getPartnerById = async (id) => {
   return { type: null, message: partnerById, status: 200 };
 };
 
+const createPartner = async (partner) => {
+  const validatePartner = partnerSchema.validate(partner);
+  if (validatePartner.error) {
+    return {
+      type: 'error',
+      message: validatePartner.error.details[0].message,
+      status: 422,
+    };
+  }
+  const insertIdPartner = await model.createPartner(partner);
+
+  return {
+    type: null,
+    message: `Sócio inserido com sucesso no id: ${insertIdPartner}`,
+    status: 200,
+  };
+};
+
 module.exports = {
   getAllPartners,
   getPartnerById,
+  createPartner,
 };
