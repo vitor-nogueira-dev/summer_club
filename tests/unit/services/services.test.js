@@ -5,6 +5,7 @@ const mocks = require('../../mocks/mocks');
 const service = require('../../../src/services');
 
 describe('Testando a camada de serviço', () => {
+  afterEach(() => sinon.restore());
   it('Testando get all partners', async () => {
     // arrange
     sinon.stub(model, 'getAllPartners').resolves(mocks.getAllPartners);
@@ -17,10 +18,11 @@ describe('Testando a camada de serviço', () => {
   });
   it('Testando get partner by id', async () => {
     // arrange
-    sinon.stub(model, 'getPartnerById').resolves(mocks.getPartnerById)
+    sinon.stub(model, 'getPartnerById').resolves(mocks.getPartnerById);
     // act
-    const result = await service.getPartnerById(2)
+    const result = await service.getPartnerById(2);
     // assert
-    expect(result.type).to.be.equal(null)
-    expect(result.message).to.be.deep.equal(mocks.getPartnerById)
+    expect(result.type).to.be.equal(null);
+    expect(result.message).to.be.deep.equal(mocks.getPartnerById);
+  });
 });
