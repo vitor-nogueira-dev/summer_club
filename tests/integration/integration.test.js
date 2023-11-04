@@ -14,6 +14,14 @@ const { expect } = chai;
 
 describe.only('Teste de integração [GET, POST, PUT, DELETE]', () => {
   afterEach(() => sinon.restore());
+  it.only('Testando rota get all partners', async () => {
+    // arrange
+    sinon.stub(service, 'getAllPartners').resolves({ type: null, message: mocks.getAllPartners, status: 200 });
+    // act
+    const response = await chai.request(app).get('/club/partners');
+    // assert
+    expect(response.status).to.be.equal(200);
+    expect(response.body).to.be.deep.equal(mocks.getAllPartners);
   it('Testando partner by id', async () => {
     // arrange
     sinon
@@ -35,5 +43,4 @@ describe.only('Teste de integração [GET, POST, PUT, DELETE]', () => {
     // assert
     expect(response.status).to.be.equal(404);
     expect(response.body).to.be.deep.equal({ message: 'Partner Not Found' });
-  });
 });
