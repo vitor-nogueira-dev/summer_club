@@ -15,4 +15,13 @@ describe('Testando camada de Model', () => {
     expect(result).to.be.an('array');
     expect(result).to.be.lengthOf(4);
   });
+  it('Testando get partner by id', async () => {
+    // arrange
+    sinon.stub(connection, 'execute').resolves([[mocks.getPartnerById]])
+    // act
+    const result = await model.getPartnerById(2)
+    // assert
+    expect(result).to.be.deep.equal(mocks.getPartnerById)
+    expect(result).to.be.an('object')
+  })
 });

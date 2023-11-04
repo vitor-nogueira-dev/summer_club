@@ -15,4 +15,12 @@ describe('Testando a camada de serviço', () => {
     expect(result.message).to.be.deep.equal(mocks.getAllPartners);
     expect(result.status).to.be.equal(200);
   });
+  it('Testando get partner by id', async () => {
+    // arrange
+    sinon.stub(model, 'getPartnerById').resolves(mocks.getPartnerById)
+    // act
+    const result = await service.getPartnerById(2)
+    // assert
+    expect(result.type).to.be.equal(null)
+    expect(result.message).to.be.deep.equal(mocks.getPartnerById)
 });
