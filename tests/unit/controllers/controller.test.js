@@ -37,9 +37,6 @@ describe('Testando camada de controller', () => {
         id: 2,
       },
     };
-    res.status = sinon.stub().returnsThis();
-    res.json = sinon.stub();
-
     sinon
       .stub(service, 'getPartnerById')
       .resolves({ type: null, message: mocks.getPartnerById, status: 200 });
@@ -49,4 +46,27 @@ describe('Testando camada de controller', () => {
     expect(res.status).to.be.calledWith(404);
     expect(res.json).to.be.calledWith(mocks.getPartnerById);
   });
+   it('Testando create partner', async () => {
+    // arrange
+    const res = {};
+    const req = {
+      body: mocks.insertPartner,
+    }
+    res.status = sinon.stub().returnsThis();
+    res.json = sinon.stub();
+
+    sinon.stub(service, 'createPartner').resolves({
+      type: null,
+      message: 'Sócio inserido com sucesso no id: 1',
+      status: 200,
+    });
+    // req.body = mocks.insertPartner;
+    // act
+    await controller.createPartner(req, res);
+    // assert
+    expect(res.status).to.be.calledWith(200);
+    expect(res.json).to.be.calledWith({
+      message: 'Sócio inserido com sucesso no id: 1',
+    });
+   });
 });

@@ -47,4 +47,21 @@ describe('Teste de integração [GET, POST, PUT, DELETE]', () => {
     expect(response.status).to.be.equal(404);
     expect(response.body).to.be.deep.equal({ message: 'Partner Not Found' });
   });
+  it.only('Testando create partner', async () => {
+    // arrange
+    sinon.stub(service, 'createPartner').resolves({
+      type: null,
+      message: 'Sócio inserido com sucesso no id: 1',
+      status: 200,
+    });
+    // act
+    const response = await chai
+      .request(app)
+      .post('/club/partners')
+      .send(mocks.insertPartner);
+    // assert
+    expect(response.status).to.be.equal(200);
+    expect(response.body).to.be.deep.equal({
+      message: 'Sócio inserido com sucesso no id: 1',
+    });
 });
