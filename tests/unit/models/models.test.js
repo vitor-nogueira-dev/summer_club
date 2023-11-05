@@ -25,7 +25,7 @@ describe('Testando camada de Model', () => {
     expect(result).to.be.deep.equal(mocks.getPartnerById);
     expect(result).to.be.an('object');
   });
-   it('Testando create partner', async () => {
+  it('Testando create partner', async () => {
     // arrange
     sinon.stub(connection, 'execute').resolves([{ insertId: 1 }]);
     // act

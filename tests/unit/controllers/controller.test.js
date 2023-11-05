@@ -46,12 +46,12 @@ describe('Testando camada de controller', () => {
     expect(res.status).to.be.calledWith(404);
     expect(res.json).to.be.calledWith(mocks.getPartnerById);
   });
-   it('Testando create partner', async () => {
+  it('Testando create partner', async () => {
     // arrange
     const res = {};
     const req = {
       body: mocks.insertPartner,
-    }
+    };
     res.status = sinon.stub().returnsThis();
     res.json = sinon.stub();
 
@@ -68,5 +68,5 @@ describe('Testando camada de controller', () => {
     expect(res.json).to.be.calledWith({
       message: 'Sócio inserido com sucesso no id: 1',
     });
-   });
+  });
 });
