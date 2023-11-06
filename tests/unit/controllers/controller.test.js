@@ -93,8 +93,8 @@ describe('Testando camada de controller', () => {
     const res = {};
     const req = {
       params: { id: 1 },
-    }
-     sinon.stub(service, 'deletePartner').resolves({
+    };
+    sinon.stub(service, 'deletePartner').resolves({
       type: null,
       message: 'Sócio deletado com sucesso',
       status: 200,

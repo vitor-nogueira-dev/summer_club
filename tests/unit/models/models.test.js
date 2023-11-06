@@ -48,4 +48,8 @@ describe('Testando camada de Model', () => {
     sinon.stub(connection, 'execute').resolves([{ affectedRows: 1 }]);
     // act
     const result = await model.deletePartner(1);
+    // assert
+    expect(result).to.be.equal(1);
+    expect(result).to.be.an('number');
+  });
 });

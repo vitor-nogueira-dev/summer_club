@@ -56,5 +56,5 @@ describe('Testando a camada de serviço', () => {
     expect(result.type).to.be.equal(null);
     expect(result.message).to.be.equal('Sócio deletado com sucesso');
     expect(result.status).to.be.equal(200);
-    });
+  });
 });
