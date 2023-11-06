@@ -50,19 +50,6 @@ const insertPartner = {
   frequent: false,
 };
 
-const insertPartnerInvalidEmail = {
-  name: 'Ricardo Silva',
-  age: 30,
-  matricula: '76543218',
-  email: 'ricardo_silva',
-  frequent: false,
-};
-
-const insertPartnerBodyInvalid = {
-  name: 'Ricardo Silva',
-  email: 'ricardo_silva@gmail.com',
-};
-
 const updatePartner = {
   name: 'Lucas Silva',
   age: 30,
@@ -73,6 +60,4 @@ module.exports = {
   getPartnerById,
   insertPartner,
   updatePartner,
-  insertPartnerInvalidEmail,
-  insertPartnerBodyInvalid,
 };
