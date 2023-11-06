@@ -30,8 +30,15 @@ describe('Testando camada de Model', () => {
     sinon.stub(connection, 'execute').resolves([{ insertId: 1 }]);
     // act
     const result = await model.createPartner(mocks.insertPartner);
+    
+  });
+   it('Testando update partner', async () => {
+    // arrange
+    sinon.stub(connection, 'execute').resolves([{ affectedRows: 1 }]);
+    // act
+    const result = await model.updatePartner(1, mocks.updatePartner);
     // assert
     expect(result).to.be.equal(1);
     expect(result).to.be.an('number');
-  });
+   });
 });

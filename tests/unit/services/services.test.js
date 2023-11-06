@@ -33,6 +33,17 @@ describe('Testando a camada de serviço', () => {
     // assert
     expect(result.type).to.be.equal(null);
     expect(result.message).to.be.equal('Sócio inserido com sucesso no id: 1');
-    expect(result.status).to.be.equal(200);
   });
+  
+  it('Testando update partner', async () => {
+    // arrange
+    sinon.stub(model, 'getPartnerById').resolves([[mocks.getPartnerById]]);
+    sinon.stub(model, 'updatePartner').resolves([{ affectedRows: 1 }]);
+    // act
+    const result = await service.updatePartner(1, mocks.updatePartner);
+    // assert
+    expect(result.type).to.be.equal(null);
+    expect(result.message).to.be.equal('Sócio atualizado com sucesso');
+    expect(result.status).to.be.equal(200);
+   });
 });

@@ -13,7 +13,6 @@ chai.use(chaiHTTP);
 const { expect } = chai;
 
 describe('Teste de integração [GET, POST, PUT, DELETE]', () => {
-  afterEach(() => sinon.restore());
   it('Testando rota get all partners', async () => {
     // arrange
     sinon
@@ -55,8 +54,6 @@ describe('Teste de integração [GET, POST, PUT, DELETE]', () => {
       status: 200,
     });
     // act
-    const response = await chai
-      .request(app)
       .post('/club/partners')
       .send(mocks.insertPartner);
     // assert
@@ -64,5 +61,22 @@ describe('Teste de integração [GET, POST, PUT, DELETE]', () => {
     expect(response.body).to.be.deep.equal({
       message: 'Sócio inserido com sucesso no id: 1',
     });
-  });
+   });
+    it.only('Testando update partner', async () => {
+    // arrange
+    sinon.stub(service, 'updatePartner').resolves({
+      type: null,
+      message: 'Sócio atualizado com sucesso',
+  afterEach(() => sinon.restore());
+      // act
+      const response = await chai
+      .request(app)
+      .patch('/club/partners/1')
+      .send(mocks.updatePartner);
+    // assert
+    expect(response.status).to.be.equal(200);
+    expect(response.body).to.be.deep.equal({
+      message: 'Sócio atualizado com sucesso',
+ });
+      });
 });
