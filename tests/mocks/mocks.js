@@ -68,17 +68,6 @@ const updatePartner = {
   age: 30,
 };
 
-const searchPartner = [
-  {
-    id: 5,
-    name: 'Gabriel Rodrigues',
-    age: 26,
-    matricula: 1223,
-    email: 'gabriel_rodrigues@gmail.com',
-    frequent: 1,
-  },
-];
-
 module.exports = {
   getAllPartners,
   getPartnerById,
@@ -86,5 +75,4 @@ module.exports = {
   updatePartner,
   insertPartnerInvalidEmail,
   insertPartnerBodyInvalid,
-  searchPartner,
 };
