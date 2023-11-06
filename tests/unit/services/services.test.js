@@ -46,4 +46,15 @@ describe('Testando a camada de serviço', () => {
     expect(result.message).to.be.equal('Sócio atualizado com sucesso');
     expect(result.status).to.be.equal(200);
   });
+  it('Testando delete partner', async () => {
+    // arrange
+    sinon.stub(model, 'getPartnerById').resolves(mocks.getPartnerById);
+    sinon.stub(model, 'deletePartner').resolves(1);
+    // act
+    const result = await service.deletePartner(1);
+    // assert
+    expect(result.type).to.be.equal(null);
+    expect(result.message).to.be.equal('Sócio deletado com sucesso');
+    expect(result.status).to.be.equal(200);
+    });
 });

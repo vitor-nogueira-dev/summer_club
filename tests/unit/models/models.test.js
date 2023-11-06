@@ -43,4 +43,9 @@ describe('Testando camada de Model', () => {
     expect(result).to.be.equal(1);
     expect(result).to.be.an('number');
   });
+  it('Testando delete partner', async () => {
+    // arrange
+    sinon.stub(connection, 'execute').resolves([{ affectedRows: 1 }]);
+    // act
+    const result = await model.deletePartner(1);
 });

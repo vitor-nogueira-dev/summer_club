@@ -54,7 +54,6 @@ describe('Testando camada de controller', () => {
     };
     res.status = sinon.stub().returnsThis();
     res.json = sinon.stub();
-
     sinon.stub(service, 'createPartner').resolves({
       type: null,
       message: 'Sócio inserido com sucesso no id: 1',
@@ -87,6 +86,25 @@ describe('Testando camada de controller', () => {
     expect(res.status).to.be.calledWith(200);
     expect(res.json).to.be.calledWith({
       message: 'Sócio atualizado com sucesso',
+    });
+  });
+  it('Testando delete partner', async () => {
+    // arrange
+    const res = {};
+    const req = {
+      params: { id: 1 },
+    }
+     sinon.stub(service, 'deletePartner').resolves({
+      type: null,
+      message: 'Sócio deletado com sucesso',
+      status: 200,
+    });
+    // act
+    await controller.deletePartner(req, res);
+    // assert
+    expect(res.status).to.have.been.calledWith(200);
+    expect(res.json).to.have.been.calledWith({
+      message: 'Sócio deletado com sucesso',
     });
   });
 });

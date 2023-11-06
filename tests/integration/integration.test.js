@@ -13,6 +13,7 @@ chai.use(chaiHTTP);
 const { expect } = chai;
 
 describe('Teste de integração [GET, POST, PUT, DELETE]', () => {
+
   afterEach(() => sinon.restore());
 
   it('Testando rota get all partners', async () => {
@@ -83,4 +84,19 @@ describe('Teste de integração [GET, POST, PUT, DELETE]', () => {
       message: 'Sócio atualizado com sucesso',
     });
   });
+   it.only('Testando delete partner', async () => {
+    // arrange
+    sinon.stub(service, 'deletePartner').resolves({
+      type: null,
+      message: 'Sócio deletado com sucesso',
+      status: 200,
+    });
+    // act
+    const response = await chai.request(app).delete('/club/partners/1');
+    // assert
+    expect(response.status).to.be.equal(200);
+    expect(response.body).to.be.deep.equal({
+      message: 'Sócio deletado com sucesso',
+    });
+   });
 });
