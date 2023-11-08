@@ -12,7 +12,7 @@
 | ----------- | ------------------------ | ----------------- | -------------------- |
 | GET    | /club/partners | recupera todos os sócios | Não               |
 | GET   | /club/partners/:id         | recupera um sócio | Não               |
-| PATCH    | /club/partners/:d              | atualiza um campo específico de um sócio | Não |
+| PATCH    | /club/partners/:id              | atualiza um campo específico de um sócio | Não |
 | POST | /club/partners           | cria um novo sócio  | Não |
 | DELETE  | /club/partners/:id               | deleta um sócio   | Não |
 
