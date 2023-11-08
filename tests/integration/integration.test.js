@@ -66,11 +66,12 @@ describe('Teste de integração [GET, POST, PUT, DELETE]', () => {
       message: 'Sócio inserido com sucesso no id: 1',
     });
   });
-  it.only('Testando update partner', async () => {
+  it('Testando update partner', async () => {
     // arrange
     sinon.stub(service, 'updatePartner').resolves({
       type: null,
       message: 'Sócio atualizado com sucesso',
+      status: 200,
     });
     // act
     const response = await chai
@@ -83,7 +84,7 @@ describe('Teste de integração [GET, POST, PUT, DELETE]', () => {
       message: 'Sócio atualizado com sucesso',
     });
   });
-  it.only('Testando delete partner', async () => {
+  it('Testando delete partner', async () => {
     // arrange
     sinon.stub(service, 'deletePartner').resolves({
       type: null,
