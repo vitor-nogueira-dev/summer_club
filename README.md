@@ -93,7 +93,7 @@ npm test
 
 Eleve suas habilidades em desenvolvimento backend acompanhando nossa série de tutoriais no YouTube. Construa passo a passo este CRUD eficiente, explorando o padrão MSC (Model, Service, Controller), dominando o Express framework, MySQL e Docker. E aprimore a qualidade do seu código com testes unitários usando Mocha, Chai e Sinon.
 
-> 👉 [Assista à Playlist](https://www.example.com)
+> 👉 [Assista à Playlist](https://youtube.com/playlist?list=PL6ctlDQ3i0AxXy5Ne9vKFsl095Nu8Ks8y&si=GOSdS0CQjqfLkKug)
 
 --- 
 

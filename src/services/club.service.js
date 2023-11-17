@@ -22,7 +22,7 @@ const createPartner = async (partner) => {
   }
   const insertIdPartner = await model.createPartner(partner);
 
-  return newObjectReturn(null, `Sócio inserido com sucesso no id: ${insertIdPartner}`, 200);
+  return newObjectReturn(null, `Sócio inserido com sucesso no id: ${insertIdPartner}`, 201);
 };
 
 const updatePartner = async (id, partner) => {
